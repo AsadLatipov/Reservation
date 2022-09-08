@@ -1,0 +1,86 @@
+﻿<Window x:Class="ReservationDesktop.Views.MakeReservationView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ReservationDesktop.Views"
+        mc:Ignorable="d"
+        Title="MakeReservationView" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen"
+        x:Name="window">
+    <Grid Margin="50 20 0 20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--1-row-->
+        <TextBlock Grid.Row="0" Text="Make Reservation" 
+                   FontSize="27"
+                   />
+
+
+        <!--2-row-->
+        <StackPanel Grid.Row="1" VerticalAlignment="Center">
+            <Label Content="Username" FontSize="17"></Label>
+            <TextBox BorderBrush="Black" BorderThickness="1"
+                     Width="200"
+                     HorizontalAlignment="Left"
+                     Text="{Binding Path=Username, UpdateSourceTrigger=PropertyChanged}"
+                     Height="20"/>
+        </StackPanel>
+
+
+        <!--3-row-->
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" SharedSizeGroup="FirstColumn"/>
+                <ColumnDefinition Width="auto" SharedSizeGroup="SecondColumn"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Content="Floor No"/>
+            <TextBox  Style="{x:Null}" Text="{Binding Path=FloorId, UpdateSourceTrigger=PropertyChanged}" Width="100" Grid.Row="1" Grid.Column="0" Margin="0 0 10 0"/>
+
+            <Label Grid.Row="0" Grid.Column="1" Content="Room No"/>
+            <TextBox Style="{x:Null}" Text="{Binding Path=RoomId, UpdateSourceTrigger=PropertyChanged}" Width="100" Grid.Row="1" Grid.Column="1"/>
+        </Grid>
+
+        <!--4-row-->
+
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" SharedSizeGroup="FirstColumn"/>
+                <ColumnDefinition Width="auto" SharedSizeGroup="SecondColumn"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Content="Floor No"/>
+            <DatePicker Style="{x:Null}" SelectedDate="{Binding Path=StartDate,UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="0" Margin="0 0 10 0"/>
+
+            <Label Grid.Row="0" Grid.Column="1" Content="Room No"/>
+            <DatePicker Style="{x:Null}" SelectedDate="{Binding Path=EndDate,UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1"/>
+        </Grid>
+
+        <!--5-row-->
+
+        <StackPanel Orientation="Horizontal" Grid.Row="4" Margin="0 0 0 30">
+            <Button Style="{x:Null}" Command="{Binding Path=Submit}" CommandParameter="{Binding ElementName=window, Mode=OneWay}" Width="100" Height="30" Margin="0 0 10 0">Submit</Button>
+
+            <Button Style="{x:Null}" Command="{Binding Path=Cancel}" Width="100" Height="30">Cancel</Button>
+        </StackPanel>
+
+    </Grid>
+</Window>
